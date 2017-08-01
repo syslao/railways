@@ -5,4 +5,5 @@ class Ticket < ActiveRecord::Base
   belongs_to :destination_station, class_name: 'RailwayStation'
 
   validates :number, presence: true
+  validates :number, uniqueness: true
 end

@@ -19,7 +19,6 @@ class TrainsController < ApplicationController
     @train = Train.new(train_params)
     if @train.save
       redirect_to @train, notice: 'Train was successfully created.'
-      format.json { render :show, status: :created, location: @train }
     else
       render :new
     end

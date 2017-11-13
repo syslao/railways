@@ -5,7 +5,11 @@
     <%= f.label :name %><br>
     <%= f.text_field :name %>
   </div>
+  <div>
+    <%= f.label :station, 'Станция:' %>
+    <%= f.collection_select :railway_station_ids, RailwayStation.all, :id, :title, {}, { multiple: true }%>
+  </div>
   <div class="actions">
-    <%= f.submit %>
+    <%= f.submit "#{ route.new_record? ? 'Создать' : 'Изменить' }"%>
   </div>
 <% end %>

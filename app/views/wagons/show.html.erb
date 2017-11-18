@@ -1,9 +1,27 @@
 <p id="notice"><%= notice %></p>
 
 <p>
-  <strong>Variant:</strong>
-  <%= @wagon.sort %>
+  <strong>Тип поезда:</strong>
+  <%= Wagon::VARIANT[(@wagon.variant).to_sym]%>
 </p>
+<p>
+  <strong>Количество верхних мест</strong>
+  <%= @wagon.top_seats %>
+</p>
+<p>
+  <strong>Количество нижних мест</strong>
+  <%= @wagon.bottom_seats %>
+</p>
+<p>
+  <strong>Назначенный вагон:</strong>
+  <% if @wagon.train.present?  %>
+    <%= @wagon.train.number %>
+  <% else %>
+    Вагон не назначен.
+  <% end %>
+</p>
+
+
 
 <%= link_to 'Edit', edit_wagon_path(@wagon) %> |
 <%= link_to 'Back', wagons_path %>

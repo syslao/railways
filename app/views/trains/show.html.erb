@@ -4,7 +4,6 @@
   <strong>Номер:</strong>
   <%= @train.number %>
 </p>
-
 <p>
   <strong>Маршрут:</strong>
   <% if @train.route.present?  %>
@@ -13,6 +12,7 @@
     Маршрут не назначен.
   <% end %>
 </p>
+<p>
 
 <%= link_to 'Edit', edit_train_path(@train) %> |
 <%= link_to 'Back', trains_path %>

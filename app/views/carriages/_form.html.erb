@@ -1,9 +1,9 @@
-<%= form_for(@wagon) do |f| %>
-  <%= render 'common/errors', resource: @wagon %>
+<%= form_for(@carriage) do |f| %>
+  <%= render 'common/errors', resource: @carriage %>
 
   <div>
     <%= f.label :variant, 'Выберете тип вагона:' %>
-    <%= f.select :variant, Wagon::VARIANT.map {|p| [ p[1], p[0] ] }, {} %>
+    <%= f.select :variant, Carriage::VARIANT.map {|p| [ p[1], p[0] ] }, {} %>
   </div>
   <div>
     <%= f.label :train, 'Выберете поезд:' %>
@@ -19,7 +19,7 @@
     <%= f.text_field :bottom_seats %>
   </div>
   <div class="actions">
-    <%= f.submit "#{ wagon.new_record? ? 'Создать' : 'Изменить' }"%>
+    <%= f.submit "#{ carriage.new_record? ? 'Создать' : 'Изменить' }"%>
   </div>
 <% end %>
 

@@ -1,4 +1,4 @@
-class Wagon < ActiveRecord::Base
+class Carriage < ActiveRecord::Base
   belongs_to :train
 
   VARIANT = {economy: 'плацкарт', business: 'купе'}.freeze

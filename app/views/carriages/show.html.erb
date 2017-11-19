@@ -2,20 +2,20 @@
 
 <p>
   <strong>Тип поезда:</strong>
-  <%= Wagon::VARIANT[(@wagon.variant).to_sym]%>
+  <%= Carriage::VARIANT[(@carriage.variant).to_sym]%>
 </p>
 <p>
   <strong>Количество верхних мест</strong>
-  <%= @wagon.top_seats %>
+  <%= @carriage.top_seats %>
 </p>
 <p>
   <strong>Количество нижних мест</strong>
-  <%= @wagon.bottom_seats %>
+  <%= @carriage.bottom_seats %>
 </p>
 <p>
   <strong>Назначенный вагон:</strong>
-  <% if @wagon.train.present?  %>
-    <%= @wagon.train.number %>
+  <% if @carriage.train.present?  %>
+    <%= @carriage.train.number %>
   <% else %>
     Вагон не назначен.
   <% end %>
@@ -23,5 +23,5 @@
 
 
 
-<%= link_to 'Edit', edit_wagon_path(@wagon) %> |
-<%= link_to 'Back', wagons_path %>
+<%= link_to 'Edit', edit_carriage_path(@carriage) %> |
+<%= link_to 'Back', carriages_path %>

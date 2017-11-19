@@ -13,6 +13,21 @@
 
 ActiveRecord::Schema.define(version: 20171115213519) do
 
+  create_table "carriages", force: :cascade do |t|
+    t.string   "number"
+    t.integer  "top_seats",         default: 0
+    t.integer  "bottom_seats",      default: 0
+    t.integer  "side_top_seats",    default: 0
+    t.integer  "side_bottom_seats", default: 0
+    t.integer  "seats",             default: 0
+    t.string   "type"
+    t.datetime "created_at",                    null: false
+    t.datetime "updated_at",                    null: false
+    t.integer  "train_id"
+  end
+
+  add_index "carriages", ["train_id"], name: "index_carriages_on_train_id"
+
   create_table "railway_stations", force: :cascade do |t|
     t.string   "title"
     t.datetime "created_at", null: false
@@ -52,16 +67,5 @@ ActiveRecord::Schema.define(version: 20171115213519) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
-
-  create_table "wagons", force: :cascade do |t|
-    t.string   "variant"
-    t.integer  "top_seats"
-    t.integer  "bottom_seats"
-    t.datetime "created_at",   null: false
-    t.datetime "updated_at",   null: false
-    t.integer  "train_id"
-  end
-
-  add_index "wagons", ["train_id"], name: "index_wagons_on_train_id"
 
 end

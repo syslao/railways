@@ -3,7 +3,7 @@
 
   <div>
     <%= f.label :variant, 'Выберете тип вагона:' %>
-    <%= f.select :variant, Carriage::VARIANT.map {|p| [ p[1], p[0] ] }, {} %>
+    <%= f.select :type, Carriage::TYPES.map {|p| [ p[1], p[0] ] }, {} %>
   </div>
   <div>
     <%= f.label :train, 'Выберете поезд:' %>

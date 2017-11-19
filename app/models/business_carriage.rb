@@ -1,0 +1,2 @@
+class BusinessCarriage < Carriage
+end

@@ -1,0 +1,2 @@
+class SittingCarriage < Carriage
+end

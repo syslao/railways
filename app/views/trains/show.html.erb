@@ -1,10 +1,9 @@
 <p id="notice"><%= notice %></p>
 
 <p>
-  <strong>Number:</strong>
+  <strong>Номер:</strong>
   <%= @train.number %>
 </p>
-
 <p>
   <strong>Маршрут:</strong>
   <% if @train.route.present?  %>
@@ -13,6 +12,49 @@
     Маршрут не назначен.
   <% end %>
 </p>
+<p>
+  <strong>Назначенные вагоны:</strong>
+  <% if @train.wagon.present?  %>
+     <table>
+      <thead>
+        <tr>
+          <th>Тип вагона</th>
+          <th>Количество</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% @train.wagons_count_by_type.each do |type,value| %>
+          <tr>
+            <td><%= Wagon::VARIANT[(type).to_sym] %></td>
+            <td><%= value %></td>
+          </tr>
+    <% end %>
+      </tbody>
+    </table>
+    <br>
+   <table>
+      <thead>
+        <tr>
+          <th>Тип вагона</th>
+          <th>Верхних мест</th>
+          <th>Нижних мест</th>
+        </tr>
+      </thead>
+      <tbody>
+          <% Wagon::VARIANT.each do |type, value| %>
+          <rt>
+            <td><%= value %></td>
+            <td><%= @train.seats_count_by_type(type, 'top_seats')%></td>
+            <td><%= @train.seats_count_by_type(type, 'bottom_seats')%></td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+  <% else %>
+    Вагоны не назначен.
+  <% end %>
+</p>
+
 
 <%= link_to 'Edit', edit_train_path(@train) %> |
 <%= link_to 'Back', trains_path %>

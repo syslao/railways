@@ -54,6 +54,9 @@
           <th>Тип вагона</th>
           <th>Верхних мест</th>
           <th>Нижних мест</th>
+          <th>Верхних боковых мест</th>
+          <th>Нижних боковых мест</th>
+          <th>Сидячих мест</th>
         </tr>
       </thead>
       <tbody>
@@ -62,6 +65,9 @@
             <td><%= value %></td>
             <td><%= @train.seats_count_by_type(type, 'top_seats')%></td>
             <td><%= @train.seats_count_by_type(type, 'bottom_seats')%></td>
+            <td><%= @train.seats_count_by_type(type, 'side_bottom_seats')%></td>
+            <td><%= @train.seats_count_by_type(type, 'side_top_seats')%></td>
+            <td><%= @train.seats_count_by_type(type, 'seats')%></td>
           </tr>
         <% end %>
       </tbody>
@@ -74,12 +80,3 @@
 
 <%= link_to 'Edit', edit_train_path(@train) %> |
 <%= link_to 'Back', trains_path %>
-
-
-
-
- <% @train.carriage.each do |carriage| %>
-          <tr>
-            <td><%= carriage.number %></td>
-          </tr>
-    <% end %>

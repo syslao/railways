@@ -7,12 +7,15 @@ class Train < ActiveRecord::Base
   validates :number, uniqueness: true
 
   def carriages_count_by_type
-    self.carriage.group(:variant).count
+    carriage.group(:type).count
   end
 
   def seats_count_by_type(carriage_type, seat_type)
-    self.carriage.where(variant: carriage_type).sum(seat_type)
+    carriage.where(type: carriage_type).sum(seat_type)
   end
 
+  def numeration_order
+    reverse_order ? carriage.reverse : carriage
+  end
 
 end

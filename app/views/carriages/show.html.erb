@@ -10,19 +10,15 @@
   <%= @carriage.number %>
 </p>
 <p>
-  <strong>Количество верхних мест</strong>
-  <%= @carriage.top_seats %>
+  <strong>Места в вагоне:</strong>
 </p>
+<%= render @carriage.type.underscore, carriage: @carriage %>
 <p>
-  <strong>Количество нижних мест</strong>
-  <%= @carriage.bottom_seats %>
-</p>
-<p>
-  <strong>Назначенный вагон:</strong>
+  <strong>Назначенный поезд:</strong>
   <% if @carriage.train.present?  %>
     <%= @carriage.train.number %>
   <% else %>
-    Вагон не назначен.
+    Поезд не назначен.
   <% end %>
 </p>
 

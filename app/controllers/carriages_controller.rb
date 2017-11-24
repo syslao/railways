@@ -1,6 +1,13 @@
 class CarriagesController < ApplicationController
   before_action :set_carriage, only: [:show, :edit, :update, :destroy]
 
+  PARAMS = {
+    EconomyCarriage:  %i[top_seats bottom_seats side_bottom_seats side_top_seats],
+    CoupeCarriage:    %i[top_seats bottom_seats],
+    BusinessCarriage: %i[bottom_seats],
+    SittingCarriage:  %i[seats]
+  }.freeze
+
   def index
     @carriages = Carriage.all
   end
@@ -44,6 +51,10 @@ class CarriagesController < ApplicationController
   end
 
   def carriage_params
-    params.require(:carriage).permit(:variant, :top_seats, :bottom_seats, :train_id, :type)
+    params.require(:carriage).permit(:train_id, :type, permitted_params)
+  end
+
+  def permitted_params
+    PARAMS[params[:carriage][:type].to_sym]
   end
 end

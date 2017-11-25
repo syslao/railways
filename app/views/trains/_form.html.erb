@@ -14,8 +14,8 @@
     <%= f.collection_select :route_id, Route.all, :id, :name, {} %>
   </div>
   <div>
-    <%= f.label :reverse_order, 'Нумерация вагонов с хвоста поезда' %>
-    <%= f.check_box :reverse_order %>
+    <%= f.label :head_sort, 'Нумерация вагонов с хвоста поезда' %>
+    <%= f.check_box :head_sort %>
   </div>
   <div class="actions">
     <%= f.submit "#{ train.new_record? ? 'Создать' : 'Изменить' }"%>

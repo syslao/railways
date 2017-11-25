@@ -7,6 +7,8 @@ class Carriage < ActiveRecord::Base
     BusinessCarriage: 'бизнес',
     SittingCarriage:  'сидячий'
   }.freeze
+
+  scope :reversed, -> { order('number DESC') }
   
   validates :top_seats, presence: true
   validates :bottom_seats, presence: true

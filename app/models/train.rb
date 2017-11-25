@@ -15,7 +15,7 @@ class Train < ActiveRecord::Base
   end
 
   def numeration_order
-    reverse_order ? carriage.reverse : carriage
+    head_sort ? carriage.reversed : carriage
   end
 
 end

@@ -4,7 +4,7 @@ class RailwayStation < ActiveRecord::Base
   has_many :routes, through: :railway_stations_routes
 
   validates :title, presence: true
-  
-  scope :sorted, -> { includes(:routes).order('railway_stations_routes.position') }
+
+  scope :sorted, -> { joins(:routes).order('railway_stations_routes.position') }
 
 end

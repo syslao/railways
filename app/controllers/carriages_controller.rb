@@ -55,6 +55,6 @@ class CarriagesController < ApplicationController
   end
 
   def permitted_params
-    PARAMS[params[:carriage][:type].to_sym]
+    params[:carriage][:type].constantize::AVAILABLE_SEATS
   end
 end

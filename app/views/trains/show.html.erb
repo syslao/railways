@@ -14,7 +14,7 @@
 </p>
 <p>
   <strong>Назначенные вагоны:</strong>
-  <% if @train.carriage.present?  %>
+  <% if @train.carriages.present?  %>
     <table>
       <thead>
         <tr>
@@ -24,7 +24,7 @@
       <tbody>
        <% @train.numeration_order.each do |carriage| %>
           <tr>
-            <td><%= link_to carriage.number, carriage_path(carriage) %></td>
+            <td><%= link_to "Вагон №#{carriage.number}", train_carriage_path(@train, carriage) %></td>
           </tr>
     <% end %>
       </tbody>
@@ -76,6 +76,12 @@
     Вагоны не назначен.
   <% end %>
 </p>
+
+
+<p>
+  <%= link_to "Добавить вагон", new_train_carriage_path(@train) %>
+</p>
+
 
 
 <%= link_to 'Edit', edit_train_path(@train) %> |

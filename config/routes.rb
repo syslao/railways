@@ -2,7 +2,9 @@ Rails.application.routes.draw do
   root 'welcome#index'
 
   resources :trains
-  resources :railway_stations
+  resources :railway_stations do
+    patch :update_position, on: :member
+  end
   resources :routes
   resources :carriages
   # The priority is based upon order of creation: first created -> highest priority.

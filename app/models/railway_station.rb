@@ -7,13 +7,18 @@ class RailwayStation < ActiveRecord::Base
 
   scope :ordered, -> { joins(:railway_stations_routes).order('railway_stations_routes.position').uniq }
 
-  def update_position(route, position)
+  def update_attrs(route, position, arrival_time, departure_time)
     station_route = station_route(route)
-    station_route.update(position: position) if station_route
+    station_route.update(position: position, arrival_time: arrival_time, departure_time: departure_time) if station_route
   end
 
   def position_in(route)
     station_route(route).try(:position)
+  end
+  
+  def date_attr(route, attr)
+     val = station_route(route).try(attr)
+     val.strftime('%H:%M') if station_route(route).try(attr)    
   end
 
   protected

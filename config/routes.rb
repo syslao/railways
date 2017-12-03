@@ -5,7 +5,7 @@ Rails.application.routes.draw do
     resources :carriages
   end
   resources :railway_stations do
-    patch :update_position, on: :member
+    patch :update_attrs, on: :member
   end
   resources :routes
 end

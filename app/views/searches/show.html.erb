@@ -1,0 +1,46 @@
+<p>Поиск билета:</p>
+
+<%= form_tag search_path do %>
+  <div>
+    <div>
+      <%= label_tag :departure_station, 'Станция отправления' %>
+      <%= select_tag :departure_station, options_from_collection_for_select(RailwayStation.all, :id, :title)%>
+    </div>
+    <div>
+      <%= label_tag :arrival_station, 'Станция прибытия' %>
+      <%= select_tag :arrival_station, options_from_collection_for_select(RailwayStation.all, :id, :title)%>
+    </div>
+  </div>
+    <br/>
+  <div>
+    <%= submit_tag 'Найти'%>
+  </div>
+<% end %>
+
+<% if @trains.present? %>
+    <br/>
+    <p>Результаты поиска:</p>
+    <table>
+      <thead>
+        <th>Номер</th>
+        <th>Маршрут</th>
+        <th>Станция, время отправления</th>
+        <th>Станция, время прибытия</th>
+        <th></th>
+      </thead>
+      <tbody>
+      <% @trains.each do |train| %>
+        <td><%= train.number %></td>
+        <td><%= train.route.name %></td>
+        <td>
+          <%= @departure_station.title %><br/>
+          <%= @departure_station.date_attr(train.route, :departure_time) %>
+        </td>
+        <td>
+          <%= @arrival_station.title %><br/>
+          <%= @arrival_station.date_attr(train.route, :arrival_time) %>
+        </td>
+      <% end %>
+      </tbody>
+    </table>
+<% end %>

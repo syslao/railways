@@ -8,4 +8,5 @@ Rails.application.routes.draw do
     patch :update_attrs, on: :member
   end
   resources :routes
+  resource  :search, only: [:show, :create]
 end

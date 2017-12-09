@@ -1,0 +1,28 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Тип вагона:</strong>
+  <%= Carriage::TYPES[(@carriage.type).to_sym]%>
+</p>
+<p>
+<p>
+  <strong>Номер вагона:</strong>
+  <%= @carriage.number %>
+</p>
+<p>
+  <strong>Места в вагоне:</strong>
+</p>
+<%= render @carriage.type.underscore, carriage: @carriage %>
+<p>
+  <strong>Назначенный поезд:</strong>
+  <% if @carriage.train.present?  %>
+    <%= @carriage.train.number %>
+  <% else %>
+    Поезд не назначен.
+  <% end %>
+</p>
+
+
+
+<%= link_to 'Edit', edit_carriage_path(@carriage) %> |
+<%= link_to 'Back', carriages_path %>

@@ -13,6 +13,10 @@
     <%= f.label :route, 'Маршрут:' %>
     <%= f.collection_select :route_id, Route.all, :id, :name, {} %>
   </div>
+  <div>
+    <%= f.label :head_sort, 'Нумерация вагонов с хвоста поезда' %>
+    <%= f.check_box :head_sort %>
+  </div>
   <div class="actions">
     <%= f.submit "#{ train.new_record? ? 'Создать' : 'Изменить' }"%>
   </div>

@@ -1,8 +1,9 @@
 class CreateRailwayStationsRoutes < ActiveRecord::Migration
   def change
-    create_table :railway_stations_routes do |t|
-      t.integer :railway_station_id
-      t.integer :route_id
+    create_join_table :railway_stations, :routes do |t|
+      t.index :railway_station_id
+      t.index :route_id
     end
   end
 end
+

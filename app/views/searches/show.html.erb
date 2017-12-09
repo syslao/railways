@@ -20,26 +20,33 @@
 <% if @trains.present? %>
     <br/>
     <p>Результаты поиска:</p>
-    <table>
+    <table class="table">
       <thead>
-        <th>Номер</th>
-        <th>Маршрут</th>
-        <th>Станция, время отправления</th>
-        <th>Станция, время прибытия</th>
-        <th></th>
+        <tr>
+          <th scope="col">Номер</th>
+          <th scope="col">Маршрут</th>
+          <th scope="col">Станция отправления</th>
+          <th scope="col">Время отправления</th>
+          <th scope="col">Станция прибытия</th>
+          <th scope="col">Время прибытия</th>
+          <th scope="col">Покупка билета</th>
+        </tr>
       </thead>
       <tbody>
-      <% @trains.each do |train| %>
+         <% @trains.each do |train| %>
+        <tr>
         <td><%= train.number %></td>
         <td><%= train.route.name %></td>
-        <td>
-          <%= @departure_station.title %><br/>
-          <%= @departure_station.date_attr(train.route, :departure_time) %>
-        </td>
-        <td>
-          <%= @arrival_station.title %><br/>
-          <%= @arrival_station.date_attr(train.route, :arrival_time) %>
-        </td>
+        <td><%= @departure_station.title %></td>
+        <td><%= @departure_station.date_attr(train.route, :departure_time) %></td>
+        <td><%= @arrival_station.title %></td>
+        <td><%= @arrival_station.date_attr(train.route, :arrival_time) %></td>
+        <td><%= button_to "Купить", new_ticket_path(
+                  train_id: train.id,
+                  departure_station_id: @departure_station,
+                  destination_station_id: @arrival_station),
+                  :method => :get %></td>
+        </tr>
       <% end %>
       </tbody>
     </table>

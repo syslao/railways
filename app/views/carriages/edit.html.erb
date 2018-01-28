@@ -2,5 +2,5 @@
 
 <%= render 'form', carriage: @carriage %>
 
-<%= link_to 'Show', carriages_path(@carriage) %> |
-<%= link_to 'Back', carriages_path %>
+<%= link_to 'Show', train_carriage_path(@carriage.train, @carriage) %> |
+<%= link_to 'Back', train_carriages_path %>

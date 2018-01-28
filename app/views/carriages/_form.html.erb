@@ -1,15 +1,10 @@
-<%= form_for(carriage.becomes(Carriage)) do |f| %>
+<%= form_for [@train, carriage.becomes(Carriage)] do |f| %>
   <%= render 'common/errors', resource: @carriage %>
 
   <div>
     <%= f.label :variant, 'Выберете тип вагона:' %>
     <%= f.select :type, Carriage::TYPES.map {|p| [ p[1], p[0] ] }, {} %>
   </div>
-  <div>
-    <%= f.label :train, 'Выберете поезд:' %>
-    <%= f.collection_select :train_id, Train.all, :id, :number, {} %>
-  </div>
-  <br>
   <div class="field">
     <%= f.label :top_seats, 'Выберете количество верхних мест:' %><br>
     <%= f.text_field :top_seats %>
